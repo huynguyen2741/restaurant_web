@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Contact Us</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="project.css" type="text/css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+            // show datepicker for contacted date. 
+            $(document).ready(function () {
+                $('#contactDate').datepicker({
+                    showAnim: "slideDown"
+                });
+            });
+        </script>
+        <script
+            src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+    </head>
+
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="banner col-lg-12">
+                    <img src="banner.jpg" alt="banner" class="banner-image image-fluid mx-auto d-block">
+                </div>
+            </div>
+            <div class="row col-lg-12">
+                <nav class="navbar navbar-expand-lg ">
+                    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarContent"
+                        aria-expanded="false">
+                    </button>
+
+                    <div class="nav-list " id="navbarContent">
+                        <ul>
+                            <li class="nav-item"><a href="index.html">Home</a></li>
+                            <li class="nav-item"><a href="about_us.html">About Us</a></li>
+                            <li class="nav-item"><a href="menu.html">Menu</a></li>
+                            <li class="nav-item"><a href="location.html">Locations</a></li>
+                            <li class="nav-item"><a href="contact.html">Contact Us</a></li>
+                            <li class="nav_item"><a href="reference.html">Reference</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-6">
+                    <div id="content">
+                        <h1>Fill the form below </h1>
+                        <div id="contact-form">
+                            <form method="GET" action="contact.html">
+                                <fieldset>
+                                    <legend>Contact Us</legend>
+                                    <label for="name">Name: <input type="text" id="name" name="name"
+                                            data-validation="length" data-validation-length="1-30"
+                                            data-validation-error-msg="User name must have at least 1 character"></label><br /><br />
+                                    You are:
+                                    <input type="checkbox" value="customer" id="role_customer" name="role">Customer
+                                    <input type="checkbox" value="employee" id="role_employee" name="role">Employee
+                                    <br /><br />
+                                    Have you try our food?
+                                    <input type="radio" id="try_food_yes" name="try_food" value="yes">Yes
+                                    <input type="radio" id="try_food_no" name="try_food" value="no">No
+                                    <br /><br />
+                                    <label for="experience">Rate your experience:
+                                        <select name="experience" id="experience">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </label><br /><br />
+                                    <label for="comment">Any Comment?<br />
+                                        <textarea id="comment" name="comment" rows="4" cols="36"></textarea><span
+                                            id="maxlength">100</span> characters left
+                                    </label><br /><br />
+                                    <label for="email">Email
+                                        <input type="email" name="email" id="email" data-validation="email">
+                                    </label><br /><br />
+                                    <label for="color">Favorite Color
+                                        <input type="color" name="color" id="color">
+                                    </label><br /><br />
+                                    <label for="contactDate">Date contacted
+                                        <input type="contactDate" name="contactDate" id="contactDate">
+                                    </label><br /><br />
+                                    <input type="submit" value="Submit">
+                                    <br />
+                                    <br />
+                                </fieldset>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="footer col-lg-12">
+                    <p id="disclaimer">This website is developed as an educational project. Certain materials are
+                        included under the fair use exemption of the U.S. Copyright Law and have been prepared according
+                        to
+                        the multimedia fair use guidelines and are restricted from further use.<br />
+                        <span><a href="project.css">CSS file</a></span>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+        <script>
+            $.validate();
+            $('#comment').restrictLength($('#maxlength'));
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,20 @@
+{
+    "locations": {
+        "location": [{
+                "city": "Leesburg",
+                "address": "19385 Promenade Drive",
+                "phone": "571 333 7668"
+            },
+            {
+                "city": "Woodbridge",
+                "address": "4532 Potomac Mills Road",
+                "phone": "571 398 6674"
+            },
+            {
+                "city": "D.C",
+                "address": "3 K Street",
+                "phone": "206 398 7666"
+            }
+        ]
+    }
+}

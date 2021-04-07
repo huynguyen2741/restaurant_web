@@ -1,0 +1,21 @@
+<?xml version = "1.0"?>
+    <dishes>
+        <cateogry>Appetizer</cateogry>
+        <dish>
+            <name>Spring Roll</name>
+            <price>$3.95</price>
+        </dish>
+        <dish>
+            <name>Summer Roll</name>
+            <price>$3.95</price>
+        </dish>
+        <dish>
+            <name>Crab Roll</name>
+            <price>$6.95</price>
+        </dish>
+        <dish>
+            <name>Wonton</name>
+            <price>$4.95</price>
+        </dish>
+    </dishes>
+    

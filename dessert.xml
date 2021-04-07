@@ -1,0 +1,13 @@
+<?xml version = "1.0"?>
+    <dishes>
+        <cateogry>Dessert</cateogry>
+        <dish>
+            <name>Sticky Rice and Mango</name>
+            <price>$5.95</price>
+        </dish>
+        <dish>
+            <name>Che</name>
+            <price>$6.95</price>
+        </dish>
+    </dishes>
+    

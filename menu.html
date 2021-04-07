@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Menu</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="project.css" type="text/css">
+        <script>
+            var asyncRequest;
+
+            function start() {
+                //register all three button to show each dish category
+                document.getElementById("btnAppertizer").addEventListener("click",function () {showMenu("appetizer.xml","appetizer");},false);
+                document.getElementById("btnMainDish").addEventListener("click",function () {showMenu("main-dish.xml","main-dish");},false);
+                document.getElementById("btnDessert").addEventListener("click",function () {showMenu("dessert.xml","dessert");},false);
+            }
+
+            function showMenu(xmlFile,dishCategory) {
+                try {
+                    asyncRequest = new XMLHttpRequest();
+                    //register readystatechange
+                    asyncRequest.addEventListener("readystatechange",function () {getMenu(dishCategory);},false);
+                    asyncRequest.open("GET",xmlFile,true);
+                    asyncRequest.send(null);
+                }
+                catch (err) {
+                    alert("error: ");
+                }
+            }
+
+            function getMenu(dishCategory) {
+                if (asyncRequest.status == 200 && asyncRequest.readyState == 4) {
+                    //clear the <div> main dish to show different category.
+                    document.getElementById("menu-list").innerHTML = null;
+                    //create the <div> to hold the list of dishes
+                    var divTag = document.createElement("div");
+                    divTag.setAttribute("id",dishCategory);
+                    //h1 contains the "Appertizer" text
+                    var h1Element = document.createElement("h1");
+                    h1Element.innerHTML = asyncRequest.responseXML.getElementsByTagName("cateogry").item(0).firstChild.nodeValue;
+                    //create <ul> tag to hold the list of data about each dish.
+                    var ulTag = document.createElement("ul");
+                    //get all the <dish> in XML file.
+                    var allDish = asyncRequest.responseXML.getElementsByTagName("dish");
+                    for (var i = 0; i < allDish.length; i++) {
+                        var ilTag = document.createElement("li");
+                        // get the dish's name and price form XML file.
+                        var dishName = asyncRequest.responseXML.getElementsByTagName("name").item(i).firstChild.nodeValue;
+                        var dishPrice = asyncRequest.responseXML.getElementsByTagName("price").item(i).firstChild.nodeValue;
+                        //attach the name and price to <li>
+                        ilTag.innerHTML = dishName + " - " + dishPrice;
+                        ulTag.appendChild(ilTag);
+                    }
+                    //append the <h1> and <ul> to the <div> of food category.
+                    divTag.appendChild(h1Element);
+                    divTag.appendChild(ulTag);
+                    document.getElementById("menu-list").appendChild(divTag);
+                }
+            }
+
+            window.addEventListener("load",start,false);
+        </script>
+    </head>
+
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="banner col-lg-12">
+                    <img src="banner.jpg" alt="banner" class="banner-image image-fluid mx-auto d-block">
+                </div>
+            </div>
+            <div class="row col-lg-12">
+                <nav class="navbar navbar-expand-lg ">
+                    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarContent"
+                        aria-expanded="false">
+                    </button>
+
+                    <div class="nav-list " id="navbarContent">
+                        <ul>
+                            <li class="nav-item"><a href="index.html">Home</a></li>
+                            <li class="nav-item"><a href="about_us.html">About Us</a></li>
+                            <li class="nav-item"><a href="menu.html">Menu</a></li>
+                            <li class="nav-item"><a href="location.html">Locations</a></li>
+                            <li class="nav-item"><a href="contact.html">Contact Us</a></li>
+                            <li class="nav_item"><a href="reference.html">Reference</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="content">
+                        <div class="col-lg-3" id="menu-header">
+                            <ul>
+                                <li>
+                                    <button name="btnAppertizer" id="btnAppertizer" type="button">Appertizer</button>
+                                </li>
+                                <li>
+                                    <button name="btnMainDish" id="btnMainDish">Main Dish</button>
+                                </li>
+                                <li>
+                                    <button name="btnDessert" id="btnDessert">Dessert</button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-12" id="menu-list">
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="footer col-lg-12">
+                    <p id="disclaimer">This website is developed as an educational project. Certain materials are
+                        included under the fair use exemption of the U.S. Copyright Law and have been prepared according
+                        to
+                        the multimedia fair use guidelines and are restricted from further use.<br />
+                        <span><a href="project.css">CSS file</a></span>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </body>
+
+</html>

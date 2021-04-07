@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>About Us</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="project.css" type="text/css">
+        <script src="./jquery-ui-1.12.1/jquery-ui-1.12.1/jquery-ui.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script>
+            //open the new window to ask for the user's name.
+            function greetingAction() {
+                let new_window = window.open("./name_window.html","Name Window","width:10%, height:10%");
+            }
+            function start() {
+                //create variable to access the "name_btn" element.
+                const greeting_btn = document.getElementById("name_btn");
+
+                //if no value for localStorage-"name", set the text of the greeting button to "What's your name"
+                if (localStorage.getItem("name") === "" || localStorage.getItem("name") === null) {
+                    //setting the text for the button.
+                    greeting_btn.innerText = "What is your name?";
+                }
+                //get the value from localStorage-"name" and concatenate it to the greeting message to be displayed.
+                else {
+                    //setting the text for the button.
+                    greeting_btn.innerText = "Reset Name";
+                    //store the value of the localStorage-"name".
+                    var name = localStorage.getItem("name");
+
+                    //display an innitial message before being replaced by the gretting message.
+                    document.getElementById("greeting_message").innerHTML = "<br>Wait a moment please";
+                    //the greeting message.
+                    var greeting_message = "<h1>Hello " + name + "</h1><br>";
+                    //display the greeting message to replace the initial message after 2 seconds.
+                    setTimeout(() => {document.getElementById("greeting_message").innerHTML = greeting_message;},2000);
+                }
+                //call greetingAction() when the button is clicked.
+                greeting_btn.addEventListener("click",greetingAction,false);
+
+            }
+
+            //jQuery to register "resetButton" to hide the "greeting" portion of the main content.
+            $(document).ready(function () {
+                $("#resetButton").click(function () {
+                    $("#greeting").hide("slow");
+                });
+            });
+
+            window.addEventListener("load",start,false);
+
+        </script>
+    </head>
+
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="banner col-lg-12">
+                    <img src="banner.jpg" alt="banner" class="banner-image image-fluid mx-auto d-block">
+                </div>
+            </div>
+            <div class="row col-lg-12">
+                <nav class="navbar navbar-expand-lg ">
+                    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarContent"
+                        aria-expanded="false">
+                    </button>
+
+                    <div class="nav-list " id="navbarContent">
+                        <ul>
+                            <li class="nav-item"><a href="index.html">Home</a></li>
+                            <li class="nav-item"><a href="about_us.html">About Us</a></li>
+                            <li class="nav-item"><a href="menu.html">Menu</a></li>
+                            <li class="nav-item"><a href="location.html">Locations</a></li>
+                            <li class="nav-item"><a href="contact.html">Contact Us</a></li>
+                            <li class="nav_item"><a href="reference.html">Reference</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="content">
+                        <p id="greeting">
+                            <span>
+                                <span>Refresh if name doesn't change.</span><br>
+                                <button name="name_btn" id="name_btn" value="Button"></button><br><br>
+                                <!-- <button name="name_btn" id="name_btn" disabled="disabled">Reset Name</button> -->
+                                <span id="greeting_message"></span>
+                            </span><br><br>
+                            <button id="resetButton" name="resetButton">Hide Greeting</button>
+                        </p>
+
+                        <p>When you are in the mood for good times and great cuisine, be sure to check out our Viet
+                            Chopsticks Restaurant.
+
+                            The restaurant is located in one of the area's most pleasant settings, the Lansdowne Town
+                            Center, and is known for its delightful staff and superb cuisine. We have our full bar with
+                            wide
+                            selections of mix drinks, wine and beer, check out our Vietnamese beer: 'Saigon' and '33'
+                            beer.
+                            Also, you and your love ones can enjoy your meal outdoor on our patio on a nice beautiful
+                            day.
+
+                            The menu at Viet Chopsticks Restaurant features a wide array of great selections, make from
+                            only
+                            the freshest and highest quality ingredients, with something sure to please every member of
+                            your
+                            group. We also serve many vegetarian dishes, vegetarian noodle soup and fresh vegetarian
+                            garden
+                            rolls.
+
+                            Viet Chopsticks Restaurant has established itself as one of the area's favorite culinary
+                            destinations and is sure to offer you a pleasant and unique dinning experience every time
+                            you
+                            visit.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="footer col-lg-12">
+                    <p id="disclaimer">This website is developed as an educational project. Certain materials are
+                        included under the fair use exemption of the U.S. Copyright Law and have been prepared according
+                        to
+                        the multimedia fair use guidelines and are restricted from further use.<br />
+                        <span><a href="project.css">CSS file</a></span>
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+    </body>
+
+</html>

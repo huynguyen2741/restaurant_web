@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Home</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="project.css" type="text/css">
+        <script>
+            //array of images for the website.
+            var images = ['banner.jpg', 'seafood.jpg', 'shaky_beef.jpg'];
+            //display a random image from the image array.
+            function startImage() {
+                //store the acces to the image element named "random_image"
+                const image_tag = document.getElementById("random_image");
+                //the index of the random image in the image array.
+                const image_index = Math.floor(Math.random() * 3);
+                //set the source for the image element with the randomized image.
+                image_tag.setAttribute("src", images[image_index]);
+                //display the last modified in the "last-modified" element.
+                document.getElementById("last_modified").innerText = "Last modified: " + document.lastModified.toLocaleString();
+            }
+
+            //change the text color based on the user input.
+            function changeTextColor() {
+                var color_choice;
+                //prompt user to enter color, diaplay alert and ask again if input is blank.
+                do {
+                    color_choice = window.prompt("Please enter real color: ", "");
+                    //if input is black, display alert.
+                    if (color_choice === null || color_choice === "") {
+                        window.alert("Color choice cannot be blank");
+                    }
+                }
+                while (color_choice === null || color_choice === "");
+                //change the text color based on the user input.
+                document.getElementById("main_content").style.color = color_choice;
+            }
+
+            function start() {
+                startImage();
+                document.getElementById("text_button").addEventListener("click", changeTextColor, false);
+            }
+
+            window.addEventListener("load", start, false);
+        </script>
+    </head>
+
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="banner col-lg-12">
+                    <img src="banner.jpg" alt="banner" class="banner-image image-fluid mx-auto d-block">
+                </div>
+            </div>
+            <div class="row col-lg-12">
+                <nav class="navbar navbar-expand-lg ">
+                    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarContent"
+                        aria-expanded="false">
+                    </button>
+
+                    <div class="nav-list " id="navbarContent">
+                        <ul>
+                            <li class="nav-item"><a href="index.html">Home</a></li>
+                            <li class="nav-item"><a href="about_us.html">About Us</a></li>
+                            <li class="nav-item"><a href="menu.html">Menu</a></li>
+                            <li class="nav-item"><a href="location.html">Locations</a></li>
+                            <li class="nav-item"><a href="contact.html">Contact Us</a></li>
+                            <li class="nav_item"><a href="reference.html">Reference</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="content">
+                        <h1><span id="name">VIET CHOPSTICKS RESTAURANT<br /></span>Leesburg & Woodbridge<br />'The
+                            Masters
+                            of Herbs and Spices'</h1><br />
+                        <p id="main_content">
+                            'Traditional Vietnamese cooking is greatly admired for freshness of the ingredients and for
+                            the
+                            healthy eating style.'<br />
+
+                            Our cuisine features a combination of five fundamental taste elements in the overall meal:
+                            spicy
+                            (Metal), sour (Wood), bitter (Fire), salty (Water) and sweet (Eath). Each of our dishes has
+                            a
+                            distinctive flavor which reflects one or more of this elements.<br />
+
+                            Our Chefs are the Masters of making the balance between fresh herbs, meats, seafood,
+                            vegetables
+                            and a selective use of spices to reach a fine taste<br />
+
+                            Please also visit our other locations in Woodbridge and Springfield if you are in the areas.
+                            Viet Chopsticks Woodbridge and Saigon Quan Restaurant.<br />
+                        </p>
+                        <p>
+                            <button id="text_button" name="text_button">Change Text Color</button><br><br>
+                            <img name="random_image" id="random_image" alt="random_image" src="">
+                        </p>
+                        <p id="site-list">Site links:
+                            <span>
+                                <a href="index.html">Home</a>
+                                <a href="about_us.html">About Us</a>
+                                <a href="menu.html">Menu</a>
+                                <a href="location.html">Locations</a>
+                                <a href="contact.html">Contact Us</a>
+                                <a href="reference.html">Reference</a>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="footer col-lg-12">
+                    <p id="disclaimer">This website is developed as an educational project. Certain materials are
+                        included under the fair use exemption of the U.S. Copyright Law and have been prepared according
+                        to
+                        the multimedia fair use guidelines and are restricted from further use.<br />
+                        <span><a href="project.css">CSS file</a></span>
+                    </p>
+                    <p id="last_modified"></p>
+                </div>
+            </div>
+
+        </div>
+    </body>
+
+</html>
